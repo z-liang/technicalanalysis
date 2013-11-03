@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+       
+        <link rel="stylesheet" href="css/data.css" type="text/css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" href="flot-flot-f0e78fc/layout.css" type="text/css"/>
+        <link rel="stylesheet" href="css/csvtable.css" type="text/css"/>
+
+        <script type="text/javascript" src="js/httprequest.js"></script>
+        <script type="text/javascript" src="js/computeindicators.js"></script>
+        <script type="text/javascript" src="js/patterns.js"></script>
+        <script type="text/javascript" src="js/plot.js"></script>
+        <script type="text/javascript" src="js/SAX.js"></script>
+        <script type="text/javascript" src="js/performancebenchmark.js"></script>
+        
+        <!--libaries from app example-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+        <script type="text/javascript" src="flot-flot-f0e78fc/jquery.js"></script>
+        <script type="text/javascript" src="flot-flot-f0e78fc/jquery.flot.js"></script>
+            
+        <script>
+            var rawdata;
+            var patternDays;
+            var threshold;
+            var windowStep;
+            var w;
+            var a;
+            var prevRadio = "sel";
+            var results;
+            var patterns;
+            var tickers;
+            
+            
+            function requestData(){
+                tickers = document.getElementById("ticker").value.split(",");
+                sendMultiRequest(function(data){
+                            rawdata = data;
+                            plotBasicChart(data);
+                            });
+                // Fill the dropdown box
+                var selector = document.getElementById("stockSelector");
+                var selector2 = document.getElementById("stockSelector2");
+                removeAllOptions(selector);
+                removeAllOptions(selector2);
+                for (var i = 0; i<tickers.length; i++){
+                    addOption(selector, i.toString(), tickers[i]);
+                    addOption(selector2, i.toString(), tickers[i]);
+                }
+            };
+
+            $(function(){
+              $("#dataBtn").click(function(){
+                                  requestData();
+                                  });
+              
+              $("#plotBtn").click(function(){
+                                    plotAccordingToChoices(1);
+                                  });
+              
+              $("#patternBtn").click(function(){
+                                     patternParameters()
+                                     plotTemplate();
+                                     var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                                     var data = rawdata[selectedIndex];
+                                     matchPattern(data,patterns);
+                                     });
+              $("#replotBtn").click(function(){
+                                    plotAccordingToChoices(1);
+                                    });
+              
+              $("#replotBtn2").click(function(){
+                                     patternParameters();
+                                     plotTemplate();
+                                     var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                                     var data = rawdata[selectedIndex];
+                                     matchPattern(data,patterns);
+                                     });
+              });
+            
+            /*$(function(){
+              $("#similarityBtn").click(function(){
+                                        sendRequest(function(data){
+                                                    plotTemplate();
+                                                    plotAccordingToChoices(rawdata,0);
+                                                    });
+                                  });
+              
+              });*/
+            
+            function plotBasicChart(data){
+                var plotdata = new Array();
+                
+                for(var i=0; i<data.length; i++){
+                    var currData = data[i];
+                    plotdata.push({label:currData.label, data:currData.basicData});
+                }
+                var ph1 = document.getElementById("basicPlot");
+                $.plot(ph1, plotdata, {
+                       xaxis: {
+                        mode: "time",
+                        minTickSize:[1, "month"]
+                       }
+                       });
+            }
+            
+            function plotAccordingToChoices(flag){
+                var selectedIndex = document.getElementById("stockSelector").selectedIndex;
+                var data = rawdata[selectedIndex];
+                
+                var plotdata = [{label: data.label, data:data.basicData}];
+
+                if (flag == 1){
+                    if(document.getElementById("idma").checked == true){
+                        drawMA(plotdata,data);
+                    } else {
+                    var ph1 = document.getElementById("placeholder1");
+                    $.plot(ph1, plotdata, {
+                           xaxis: {
+                            mode: "time",
+                            minTickSize:[1, "month"]
+                           }
+                    });
+                    }
+                    
+                    if (document.getElementById("idmacd").checked == true){
+                        $("#macdlabel").show();
+                        $("#placeholder2").show();
+                        drawMACD(data);
+                    } else{
+                        $("#macdlabel").hide();
+                        $("#placeholder2").hide();
+                    }
+                     
+                     if (document.getElementById("idstochastic").checked == true){
+                         $("#solabel").show();
+                         $("#placeholder3").show();
+                         drawStochasticOscillator(data);
+                     } else{
+                         $("#solabel").hide();
+                         $("#placeholder3").hide();
+                     }
+                }
+            };
+            
+            
+            function drawMA(plotdata,data){
+                var n = parseInt($("#madays").val(),10);
+                var ma = {label:"Moving Average",
+                            data:computeMovingAverage(data.basicData, parseInt(n))};
+                plotdata.push(ma);
+                $.plot($("#placeholder1"), plotdata, {
+                       xaxis: {
+                       mode: "time",
+                       minTickSize:[1, "month"]
+                       }
+                       });
+            };
+            
+            function drawMACD(data){
+                var ln = parseInt($("#macdldays").val(),10);
+                var sn = parseInt($("#macdsdays").val(),10);
+                var macd = {label:"MACD",
+                    data:computeMACD(data.basicData, parseInt(sn), parseInt(ln)),
+                    bars: {show:true},
+                    color: 3};
+                
+                $.plot($("#placeholder2"), [macd], {
+                       xaxis: {
+                       mode: "time",
+                       minTickSize:[1, "month"]}
+                       });
+            };
+            
+            function drawStochasticOscillator(data){
+                var scResult = computeStochasticOscillator({basic:data.basicData, extra:data.extraData});
+                var so = [{label:"%K",
+                          data: scResult.k,
+                          color: 4},
+                          {label:"%D",
+                          data: scResult.d,
+                          color: 2}];
+                var markings = [
+                                { color: '#C0C0C0', yaxis: { from: 80 } },
+                                { color: '#C0C0C0', yaxis: { to: 20 } }
+                                ];
+                $.plot($("#placeholder3"), so, {
+                       series:{shadow:0},
+                       xaxis: {
+                       mode: "time",
+                       minTickSize:[1, "month"]
+                       },
+                       yaxis: { min: 0, max: 100 },
+                       grid: { markings: markings }
+                       });
+            };
+            
+            function matchPattern(data, patterns){
+                results = new Array();
+                var patternsFound = new Array();
+                
+                var patternList = ["Head and Shoulders", "Inverse Head and Shoulders", "Double Tops", "Double Bottoms", "Triple Tops", "Triple Bottoms"];
+                var matchMethod = document.getElementById("matchMethodSelector").value;
+                
+                var start = new Date();
+                for(var j=0; j<patterns.length; j++){
+                    var pattern = patterns[j];
+                    var result;
+                    if(matchMethod == "sax"){
+                        result = findPattern(data.basicData, pattern, w, a, threshold, windowStep);
+                    }else if(matchMethod =="bruteForce"){
+                        result = bruteForceMatchPattern(data.basicData, pattern, threshold, windowStep);
+                    }
+                    if(result.length>0){
+                        results.push(result);
+                        patternsFound.push(patternList[j]);
+                    }
+                }
+                var time = new Date() - start;
+                document.getElementById("timeused").innerHTML = "<h5>Time used: "+time+"</h5>";
+                
+                var selector = document.getElementById("patFoundSelector");
+                var selector2 = document.getElementById("matchSelector");
+                // Fill the dropdown box
+                removeAllOptions(selector);
+                addOption(selector, "0", "All Patterns");
+                for (var i = 1; i<=patternsFound.length; i++){
+                    addOption(selector, i.toString(), patternsFound[i-1]);
+                }
+
+                selector.selectedIndex = 0;
+                
+                fillMatchResultSelectors(0);
+
+                document.getElementById("zoomin").disabled = true;
+                plotPattern(data, 0, 0);
+            }
+            
+            function fillMatchResultSelectors(selectedPattern){
+                var selector = document.getElementById("matchSelector");
+                removeAllOptions(selector);
+                addOption(selector, "0", "All Matches");
+                var k = 1;
+                if(selectedPattern==0){
+                    for (var i = 0; i<results.length; i++){
+                        var currResult = results[i];
+                        for(var j=0; j<currResult.length; j++){
+                            addOption(selector, k.toString(), "Match "+k.toString());
+                            k++;
+                        }
+                    }
+                    document.getElementById("noOfMatches").innerHTML = "<h5>Number of Matches Found: "+(k-1)+"</h5>";
+                }else{
+                    var result = results[selectedPattern-1];
+                    for(var j=0; j<result.length; j++){
+                        addOption(selector, k.toString(), "Match "+k.toString());
+                        k++;
+                    }
+                }
+            }
+            
+            function plotTemplate(){
+                patternDays = parseInt($("#patternDays").val(),10);
+                
+                patterns = retrievePattern(patternDays);
+                var plotTemp = new Array();
+                if(patterns.length==1){
+                    var pattern = patterns[0];
+                    var template = new Array(pattern.length);
+                    for (var i = 0; i<pattern.length; i++){
+                        template[i] = new Array(2);
+                        template[i][0] = i;
+                        template[i][1] = pattern[i];
+                    }
+                    plotTemp = [{data: template}];  
+                }else{
+                    for(var j=0; j<patterns.length;j++){
+                        var pattern = patterns[j];
+                        var template = new Array(pattern.length);
+                        for (var i = 0; i<pattern.length; i++){
+                            template[i] = new Array(2);
+                            template[i][0] = i;
+                            template[i][1] = pattern[i];
+                        }
+                        plotTemp.push({data: template});
+                    }
+                }
+                $.plot($("#placeholder5"), plotTemp, {});
+            }
+            
+            function plotPattern(data, selectedPattern, selectedMatch){
+                if(results.length>0){
+                    //$("#patternResultPlot").show();
+                    document.getElementById("patternResultPlot").style.display = "block";
+                    var plotData = [{label:data.label, data: data.basicData}];
+                    var zoomIn = document.getElementById("zoomin").checked;
+                    // Plot matched patterns
+                    
+                    if(selectedPattern == 0){
+                        for(var i=0; i<results.length; i++){
+                            var patternResults = results[i];
+                            var currPlotData = plotSelectedPattern(data, patternResults, selectedMatch, zoomIn);
+                            for(var j=0; j<currPlotData.length; j++){
+                                plotData.push(currPlotData[j]);
+                            }
+                        }
+                    }else{
+                        selectedPattern --;
+                        var patternResults = results[selectedPattern];
+                        var currPlotData = plotSelectedPattern(data, patternResults, selectedMatch, zoomIn);
+                        if(zoomIn){
+                            plotData = currPlotData;
+                        }else{
+                            for(var j=0; j<currPlotData.length; j++){
+                                plotData.push(currPlotData[j]);
+                            }
+                        }
+                    }
+
+                    $.plot($("#patternResultPlot"), plotData, {
+                           xaxis:{mode:"time"}
+                           });
+                } else {
+                    document.getElementById("patternResultPlot").style.display = "none";
+                }
+            }
+            
+            function plotSelectedPattern(data, patternResults, selectedMatch, zoomIn){
+                var n = patterns[0].length;
+                var plotData = new Array();
+                if(selectedMatch == 0){
+                    for (var k=0; k<patternResults.length; k++){
+                        var match = patternResults[k].data;
+                        var pat = patternResults[k].pattern;
+                        var patternPlot = new Array(n);
+                        for (var i = 0; i< n; i++){
+                            patternPlot[i] = new Array(2);
+                            patternPlot[i][0] = match[n-i-1][0];
+                            patternPlot[i][1] = pat[i];
+                        }
+                        var patPlot = {data:patternPlot};
+                        plotData.push(patPlot);
+                    }
+                }else{
+                    selectedMatch--;
+                    var match = patternResults[selectedMatch].data;
+                    var pat = patternResults[selectedMatch].pattern;
+                    var patternPlot = new Array(n);
+                    for (var i = 0; i< n; i++){
+                        patternPlot[i] = new Array(2);
+                        patternPlot[i][0] = match[n-i-1][0];
+                        patternPlot[i][1] = pat[i];
+                    }
+                    var patPlot = {data: patternPlot};
+                    if(zoomIn){
+                        plotData.push(match);
+                    }
+                    plotData.push(patPlot);
+                }
+                return plotData;
+            }
+            
+            function patternParameters(){
+                patternDays = parseInt($("#patternDays").val(),10);
+                w = parseInt($("#w").val(),10);
+                a = parseInt($("#a").val(),10);
+                windowStep = parseInt($("#windowStep").val(),10);
+                threshold = parseFloat($("#threshold").val());
+            }
+
+            window.onload = function(){
+                document.getElementById("patFoundSelector").onchange = patFoundSelectorChanged;
+                document.getElementById("matchSelector").onchange = matchSelectorChanged;
+                document.getElementById("patternSelector").onchange  = plotTemplate;
+                document.getElementById("zoomout").onchange  = zoomInOutChanged;
+                document.getElementById("zoomin").onchange  = zoomInOutChanged;
+            };
+
+            function patFoundSelectorChanged(){
+                var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                var data = rawdata[selectedIndex];
+                var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
+                fillMatchResultSelectors(selectedPattern);
+               // var selectedMatch = document.getElementById("matchSelector").selectedIndex;
+                document.getElementById("matchSelector").selectedIndex = 0;
+                
+                if(selectedPattern ==0){
+                    document.getElementById("matchSelector").disabled=true;
+                    document.getElementById("zoomin").disabled=true;
+                }else{
+                    document.getElementById("matchSelector").disabled=false;
+                    if(selectedMatch==0){
+                        document.getElementById("zoomin").disabled=true;
+                    }else{
+                        document.getElementById("zoomin").disabled=false;
+                    }
+                }
+                plotPattern(data, selectedPattern, selectedMatch);
+            }
+            
+            function matchSelectorChanged(){
+                var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                var data = rawdata[selectedIndex];
+                var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
+                var selectedMatch = document.getElementById("matchSelector").selectedIndex;
+                if(selectedPattern ==0 || selectedMatch == 0){
+                    document.getElementById("zoomin").disabled=true;
+                }else{
+                    document.getElementById("zoomin").disabled=false;
+                }
+                plo
+                plotPattern(data, selectedPattern, selectedMatch);
+            }
+            
+            function zoomInOutChanged(){
+                var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                var data = rawdata[selectedIndex];
+                var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
+                var selectedMatch = document.getElementById("matchSelector").selectedIndex;
+                if(selectedPattern ==0 || selectedMatch == 0){
+                    document.getElementById("zoomin").disabled=true;
+                }else{
+                    document.getElementById("zoomin").disabled=false;
+                }
+                plotPattern(data, selectedPattern, selectedMatch);
+            }
+            
+        </script>
+            
+    </header>
+    <body>
+        <div data-role="page" id="home">
+            <div date-role="header">
+                <h1>Technical Analysis</h1>
+            </div>
+            
+            <div data-role="content">
+                <h4> Enter Stock Information </h4>
+                <form id="dataRequestForm">
+                    <label>Stock ticker(s)</label>
+                    <input type="text" name="ticker" id="ticker" data-mini="true"/>
+                    <label>From date</label><br>
+                    <input type="date" name="fromdate" id="fromdate" data-mini="true"/>
+                    <label>To date</label><br>
+                    <input type = "date" name="todate" id = "todate" data-mini="true"/><br>
+                    <a href="#introduction" data-role="button" id="dataBtn" name="dataBtn">Retrieve Data</a>
+                </form>
+            </div>
+        </div>
+        
+        <div data-role="page" id="introduction">
+            <div data-role="header">
+                <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Basic Chart</h1>
+            </div>
+            <div data-role="content">
+                <div id="basicPlot" style="width:300px;height:200px;"></div><br><br>
+                <ul data-role="listview">
+                    <li><a href="#inputform1" data-icon="plus" data-iconpos="notext">Technical Indicators</a> </li>
+                    <li><a href="#patterns" data-icon="minus" data-iconpos="notext">Pattern Matching</a> </li>
+                    <!--li><a href="#" data-icon="minus" data-iconpos="notext">Similarity Search</a> </li-->
+                </ul>
+            </div>
+        </div>
+        
+        <div data-role="page" id="inputform1">
+            <div data-role="header">
+                <a href="#introduction" data-icon="back" data-iconpos="notext">Back</a>
+                <a href="#home" data-icon="home" class="ui-btn-right" data-iconpos="notext">Home</a>
+                <h1>Stock Info</h1>
+            </div>
+            <div data-role="content">
+                <form id="indicatorsForm">
+                    <label for"stockSelector"> Stock</label>
+                    <select id="stockSelector" name="stockSelector">
+                    </select><br>
+                    <label>Technical Indicators</label>
+                    <fieldset data-role="controlgroup">
+                        <input name="ma" id="idma" type="checkbox" type="checkbox"/>
+                        <label for="idma">Moving Average</label>
+                        <input name="macd" id="idmacd" type="checkbox" type="checkbox"/>
+                        <label for="idmacd">MACD</label>
+                        <input name="stochastic" id="idstochastic" type="checkbox" type="checkbox"/>
+                        <label for="idstochastic">Stochastic Oscillator</label>
+                    </fieldset>
+                    <br>
+                    <a href="#charts" data-role="button" id="plotBtn" name="plotBtn">Plot Chart</a>
+                </form>
+            </div>
+        </div>
+        
+        <div data-role="page" id="patterns">
+            <div data-role="header">
+                <a href="#introduction" data-icon="back" data-iconpos="notext">Back</a>
+                <a href="#patternParameters" data-icon="edit" class="ui-btn-right" data-iconpos="notext">Edit</a>
+                 <h1>Patterns</h1>
+            </div>
+            <div data-role="content">
+                <form id="patternDataForm">
+                    <label for="stockSelector2">Stock</Label>
+                    <select id="stockSelector2" name="stockSelector2" data-mini="true">
+                    </select>
+                    <label for="matchMethodSelector">Method</label>
+                    <select id="matchMethodSelector" name="matchMethodSelector" data-mini="true">
+                        <option value="sax">SAX</option>
+                        <option value="bruteForce">Brute Force</option>
+                    </select>
+                    <label for="patternSelector">Pattern</Label>
+                    <select id="patternSelector" name="patternSelector" data-mini="true">
+                        <option value="allPat">All Patterns</option>
+                        <option value="hsOpt">Head and Shoulders</option>
+                        <option value="ihsOpt">Inverse Head and Shoulders</option>
+                        <option value="dtOpt">Double Tops</option>
+                        <option value="dbOpt">Double Bottoms</option>
+                        <option value="ttOpt">Triple Tops</option>
+                        <option value="tbOpt">Triple Bottoms</option>
+                    </select>
+                    <div id="placeholder5" style="width:300px;height:150px;"></div><br> 
+                    <a href="#patternResult" data-role="button" id="patternBtn" name="patternBtn" data-mini="true">Find Pattern</a>
+                </form>
+            </div>
+        </div>
+        
+        <div data-role="page" id="charts">
+            <div data-role="header">
+                <a href="#inputform1" data-icon="back" data-iconpos="notext">Back</a>
+                <a href="#indicatorsPage" data-icon="edit" data-iconpos="notext" class="ui-btn-right" id="indicatorBtn">Edit</a>
+                <h1>Chart</h1>
+            </div>
+            <div data-role="content">
+                <div id="placeholder1" style="width:300px;height:200px;"></div>
+                 <div id="macdlabel"><h5>MACD</h5></div>
+                 <div id="placeholder2" style="width:300px;height:100px;"></div>
+                 <div id="solabel"><h5>Stochastic Oscillator</h5></div>
+                 <div id="placeholder3" style="width:300px;height:100px;"></div>
+            </div>
+
+        </div>
+        
+        <div data-role="page" id="indicatorsPage" title="Input Parameters">
+            <div data-role="header">
+                <a href="#charts" data-icon="back" data-iconpos="notext" id="replotBtn">Back</a>
+                <h1>Edit Parameters</h1>
+            </div>
+            
+            <div data-role="content">
+                <form>
+                    <h4>Moving Average</h4>
+                    <label>Number of days:</label><br>
+                    <input type="text" name="madays" id="madays" data-mini="true" value="14">
+                    <h4>MACD</h4>
+                    <label>Long-term MA:</label><br>
+                    <input type="text" name="macdldays" id="macdldays" data-mini="true" value="26">
+                    <label>Short-term MA:</label><br>
+                    <input type="text" name="macdsdays" id="macdsdays" data-mini="true" value="14">
+                </form>
+            </div>
+        </div>
+        
+        <div data-role="page" id="patternResult">
+            <div data-role="header">
+                <a href="#patterns" data-icon="back" data-iconpos="notext">Back</a>
+                <a href="#patternParameters" data-icon="edit" data-iconpos="notext" class="ui-btn-right" id="indicatorBtn">Edit</a>
+                <h1>Patterns</h1>
+            </div>
+            <div data-role="content">
+                <div id="noOfMatches"></div>
+                <form>
+                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <label for="patFoundSelector">Pattern</label>
+                        <select id="patFoundSelector" name="patFoundSelector">
+                        </select>
+                        <label for="matchSelector">Match</label>
+                        <select id="matchSelector" name="matchSelector">
+                        </select>
+                    </fieldset>
+                </form>
+                <div id="patternResultPlot" style="width:300px;height:250px;"></div>
+                <br>
+                <form>
+                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <input name="zoomRadioBtn" id="zoomout" value="zoomout" checked="checked" type="radio"/>
+                        <label for="zoomout">Zoom Out</label>
+                        <input name="zoomRadioBtn" id="zoomin" value="zoomin" type="radio"/>
+                        <label for="zoomin">Zoom In</label>
+                    </fieldset>
+                </form>
+                <div id="timeused"></div>
+            </div>
+        </div>
+        
+        <div data-role="page" id="patternParameters">
+            <div data-role="header">
+                <a href="#patternResult" data-icon="back" data-iconpos="notext" id="replotBtn2">Back</a>
+                <h1>Edit Parameters</h1>
+            </div>
+            <div data-role="content">
+                <label>SAX length</label>
+                <input type="text" name="w" id="w" data-mini="true" value="10">
+                <label>Number of symbols</label>
+                <input type="text" name="a" id="a" data-mini="true" value="8">
+                <label>Length of pattern (days)</label>
+                <input type="text" name="patternDays" id="patternDays" data-mini="true" value="30">
+                <label>Match Criteria: max distance</label>
+                <input type="text" name="threshold" id="threshold" data-mini="true" value="7.8">
+                <label>Window step</label>
+                <input type="text" name="windowStep" id="windowStep" data-mini="true" value="2">
+            </div>
+        </div>
+        
+        <!--div data-role="page" id="similarityInput">
+            <div data-role="header">
+                <a href="#introduction" data-icon="back" data-iconpos="notext">Back</a>
+                <a href="#home" data-icon="home" class="ui-btn-right" data-iconpos="notext">Home</a>
+                <h1>Stock Info</h1>
+            </div>
+            <div data-role="content">
+                <h4> Input stock information to be compared with: </h4>
+                <form id="similarityForm">
+                    <fieldset data-role="controlgroup">
+                        <label for="ticker2">Ticker</label>
+                        <input name="ticker2" id="ticker2" type="text" data-mini="true" />
+                        <label for="fromdate2">From date</label>
+                        <input name="fromdate2" id="fromdate2" type="text" data-mini="true"/>
+                        <label for="todate2">To date</label>
+                        <input name="todate2" id="todate2" type="text" data-mini="true"/>
+                    </fieldset>
+                    <br><br>
+                    <a href="#" data-role="button" data-mini="true" id="similarityBtn" name="similarityBtn">Find similar segment</a>
+                </form>
+            </div>
+        </div>
+        
+        <div data-role="page" id="similarityResults">
+            <div data-role="header">
+                <a href="#similarityInput" data-icon="back" data-iconpos="notext">Back</a>
+                <a href="#patternParameters" data-icon="edit" data-iconpos="notext" class="ui-btn-right" id="indicatorBtn">Edit</a>
+                <h1>Similar Stock Data</h1>
+            </div>
+            <div data-role="content">
+                <form>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input name="displayOpt" id="displayAll" type="radio" value="all" data-mini="true" data-inline="true"/>
+                        <label for="displayAll">All</label>
+                        <input name="displayOpt" id="displaySel" type="radio" value="sel" data-mini="true" checked="checked"/>
+                        <label for="displaySel">Selected</label>
+                    </fieldset>
+                    <div id="mSelector"><select id="matchSelector" name="matchSelector" data-mini="true" data-inline="true">
+                    </select> </div>
+                </form>
+                <div id="placeholder6" style="width:300px;height:300px;"></div>
+            </div>
+        </div-->
+    </body>
+</html>
