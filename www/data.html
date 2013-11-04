@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
-    <header>
+<html class="ui-mobile">
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Technical Analysis</title>
         <meta name = "format-detection" content = "telephone=no"/>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
        
@@ -34,7 +34,6 @@
             var windowStep;
             var w;
             var a;
-            var prevRadio = "sel";
             var results;
             var patterns;
             var tickers;
@@ -55,6 +54,9 @@
                     addOption(selector, i.toString(), tickers[i]);
                     addOption(selector2, i.toString(), tickers[i]);
                 }
+                //$("#stockSelector").selectmenu('refresh');
+                //$("#stockSelector2").selectmenu('refresh');
+                plotTemplate();
             };
 
             $(function(){
@@ -216,6 +218,8 @@
                     var result;
                     if(matchMethod == "sax"){
                         result = findPattern(data.basicData, pattern, w, a, threshold, windowStep);
+                    }else if(matchMethod == "ruleBased"){
+                        result = ruleBasedMatchPattern(data.basicData, j, pattern.length, windowStep);
                     }else if(matchMethod =="bruteForce"){
                         result = bruteForceMatchPattern(data.basicData, pattern, threshold, windowStep);
                     }
@@ -225,7 +229,7 @@
                     }
                 }
                 var time = new Date() - start;
-                document.getElementById("timeused").innerHTML = "<h5>Time used: "+time+"</h5>";
+                document.getElementById("timeused").innerHTML = "<h5>Time used: "+time+" ms</h5>";
                 
                 var selector = document.getElementById("patFoundSelector");
                 var selector2 = document.getElementById("matchSelector");
@@ -241,6 +245,7 @@
                 fillMatchResultSelectors(0);
 
                 document.getElementById("zoomin").disabled = true;
+                //$("#zoomin").checkboxradio('disable');
                 plotPattern(data, 0, 0);
             }
             
@@ -336,16 +341,23 @@
             function plotSelectedPattern(data, patternResults, selectedMatch, zoomIn){
                 var n = patterns[0].length;
                 var plotData = new Array();
+                var matchMethod = document.getElementById("matchMethodSelector").value;
+                
                 if(selectedMatch == 0){
                     for (var k=0; k<patternResults.length; k++){
                         var match = patternResults[k].data;
                         var pat = patternResults[k].pattern;
                         var patternPlot = new Array(n);
-                        for (var i = 0; i< n; i++){
-                            patternPlot[i] = new Array(2);
-                            patternPlot[i][0] = match[n-i-1][0];
-                            patternPlot[i][1] = pat[i];
+                        if(matchMethod == "ruleBased"){
+                            patternPlot = pat;
+                        }else{
+                            for (var i = 0; i< n; i++){
+                                patternPlot[i] = new Array(2);
+                                patternPlot[i][0] = match[n-i-1][0];
+                                patternPlot[i][1] = pat[i];
+                            }
                         }
+                        
                         var patPlot = {data:patternPlot};
                         plotData.push(patPlot);
                     }
@@ -354,11 +366,16 @@
                     var match = patternResults[selectedMatch].data;
                     var pat = patternResults[selectedMatch].pattern;
                     var patternPlot = new Array(n);
-                    for (var i = 0; i< n; i++){
-                        patternPlot[i] = new Array(2);
-                        patternPlot[i][0] = match[n-i-1][0];
-                        patternPlot[i][1] = pat[i];
+                    if(matchMethod == "ruleBased"){
+                        patternPlot = pat;
+                    }else{
+                        for (var i = 0; i< n; i++){
+                            patternPlot[i] = new Array(2);
+                            patternPlot[i][0] = match[n-i-1][0];
+                            patternPlot[i][1] = pat[i];
+                        }
                     }
+                    
                     var patPlot = {data: patternPlot};
                     if(zoomIn){
                         plotData.push(match);
@@ -394,13 +411,18 @@
                 
                 if(selectedPattern ==0){
                     document.getElementById("matchSelector").disabled=true;
+                    //$('#matchSelector').selectmenu('disable');
                     document.getElementById("zoomin").disabled=true;
+                    //$('#zoomin').checkboxradio('disable');
                 }else{
                     document.getElementById("matchSelector").disabled=false;
+                    //$('#matchSelector').selectmenu('enable');
                     if(selectedMatch==0){
                         document.getElementById("zoomin").disabled=true;
+                        //$('#zoomin').checkboxradio('disable');
                     }else{
                         document.getElementById("zoomin").disabled=false;
+                        //$('#zoomin').checkboxradio('enable');
                     }
                 }
                 plotPattern(data, selectedPattern, selectedMatch);
@@ -413,10 +435,11 @@
                 var selectedMatch = document.getElementById("matchSelector").selectedIndex;
                 if(selectedPattern ==0 || selectedMatch == 0){
                     document.getElementById("zoomin").disabled=true;
+                    //$('#zoomin').checkboxradio('disable');
                 }else{
                     document.getElementById("zoomin").disabled=false;
+                    //$('#zoomin').checkboxradio('enable');
                 }
-                plo
                 plotPattern(data, selectedPattern, selectedMatch);
             }
             
@@ -427,16 +450,18 @@
                 var selectedMatch = document.getElementById("matchSelector").selectedIndex;
                 if(selectedPattern ==0 || selectedMatch == 0){
                     document.getElementById("zoomin").disabled=true;
+                    //$('#zoomin').checkboxradio('disable');
                 }else{
                     document.getElementById("zoomin").disabled=false;
+                    //$('#zoomin').checkboxradio('enable');
                 }
                 plotPattern(data, selectedPattern, selectedMatch);
             }
             
         </script>
             
-    </header>
-    <body>
+    </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
         <div data-role="page" id="home">
             <div date-role="header">
                 <h1>Technical Analysis</h1>
@@ -511,6 +536,7 @@
                     <label for="matchMethodSelector">Method</label>
                     <select id="matchMethodSelector" name="matchMethodSelector" data-mini="true">
                         <option value="sax">SAX</option>
+                        <option value="ruleBased">Rule-based Approach</option>
                         <option value="bruteForce">Brute Force</option>
                     </select>
                     <label for="patternSelector">Pattern</Label>
@@ -606,11 +632,11 @@
                 <label>SAX length</label>
                 <input type="text" name="w" id="w" data-mini="true" value="10">
                 <label>Number of symbols</label>
-                <input type="text" name="a" id="a" data-mini="true" value="8">
+                <input type="text" name="a" id="a" data-mini="true" value="6">
                 <label>Length of pattern (days)</label>
                 <input type="text" name="patternDays" id="patternDays" data-mini="true" value="30">
                 <label>Match Criteria: max distance</label>
-                <input type="text" name="threshold" id="threshold" data-mini="true" value="7.8">
+                <input type="text" name="threshold" id="threshold" data-mini="true" value="2">
                 <label>Window step</label>
                 <input type="text" name="windowStep" id="windowStep" data-mini="true" value="2">
             </div>

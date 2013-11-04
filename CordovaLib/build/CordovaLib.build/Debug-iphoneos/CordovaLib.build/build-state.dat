@@ -1211,7 +1211,984 @@ N/Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/build/De
 t2
 s0
 
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDV.h
+c00000000510A9C6000000000000006C5
+t1359649888
+s1733
+i"CDVAvailability.h"
+i"CDVPlugin.h"
+i"CDVViewController.h"
+i"CDVCommandDelegate.h"
+i"CDVURLProtocol.h"
+i"CDVInvokedUrlCommand.h"
+i"CDVAccelerometer.h"
+i"CDVBattery.h"
+i"CDVCamera.h"
+i"CDVCapture.h"
+i"CDVConnection.h"
+i"CDVContact.h"
+i"CDVContacts.h"
+i"CDVCordovaView.h"
+i"CDVDebug.h"
+i"CDVDebugConsole.h"
+i"CDVDevice.h"
+i"CDVFile.h"
+i"CDVFileTransfer.h"
+i"CDVLocation.h"
+i"CDVNotification.h"
+i"CDVPluginResult.h"
+i"CDVReachability.h"
+i"CDVSound.h"
+i"CDVSplashScreen.h"
+i"CDVWhitelist.h"
+i"CDVLocalStorage.h"
+i"CDVInAppBrowser.h"
+i"CDVScreenOrientationDelegate.h"
+i"NSArray+Comparisons.h"
+i"NSData+Base64.h"
+i"NSDictionary+Extensions.h"
+i"NSMutableArray+QueueAdditions.h"
+i"UIDevice+Extensions.h"
+i"JSONKit.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVAccelerometer.h
+c00000000510A9C6000000000000004A4
+t1359649888
+s1188
+i<UIKit/UIKit.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVAccelerometer.m
+c00000000510A9C60000000000000105A
+t1359649888
+s4186
+i"CDVAccelerometer.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVAvailability.h
+c00000000510A9C600000000000000ABC
+t1359649888
+s2748
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVBattery.h
+c00000000510A9C60000000000000053A
+t1359649888
+s1338
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVBattery.m
+c00000000510A9C60000000000000163B
+t1359649888
+s5691
+i"CDVBattery.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCamera.h
+c00000000510A9C600000000000000C5E
+t1359649888
+s3166
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCamera.m
+c00000000510A9C600000000000005520
+t1359649888
+s21792
+i"CDVCamera.h"
+i"NSArray+Comparisons.h"
+i"NSData+Base64.h"
+i"NSDictionary+Extensions.h"
+i<MobileCoreServices/UTCoreTypes.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCapture.h
+c00000000510A9C60000000000000123F
+t1359649888
+s4671
+i<Foundation/Foundation.h>
+i<MobileCoreServices/MobileCoreServices.h>
+i<AVFoundation/AVFoundation.h>
+i"CDVPlugin.h"
+i"CDVFile.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCapture.m
+c00000000510A9C600000000000008EAA
+t1359649888
+s36522
+i"CDVCapture.h"
+i"JSONKit.h"
+i"CDVAvailability.h"
+i"CDVViewController.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandDelegate.h
+c00000000510A9C600000000000000862
+t1359649888
+s2146
+i"CDVAvailability.h"
+i"CDVInvokedUrlCommand.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandDelegateImpl.h
+c00000000510A9C600000000000000473
+t1359649888
+s1139
+i<UIKit/UIKit.h>
+i"CDVCommandDelegate.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandDelegateImpl.m
+c00000000510A9C600000000000001150
+t1359649888
+s4432
+i"CDVCommandDelegateImpl.h"
+i"CDVCommandQueue.h"
+i"CDVPluginResult.h"
+i"CDVViewController.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandQueue.h
+c00000000510A9C6000000000000005AA
+t1359649888
+s1450
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandQueue.m
+c00000000510A9C6000000000000014AD
+t1359649888
+s5293
+i<objc/message.h>
+i"CDV.h"
+i"CDVCommandQueue.h"
+i"CDVViewController.h"
+i"CDVCommandDelegateImpl.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVConfigParser.h
+c00000000510A9C600000000000000427
+t1359649888
+s1063
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVConfigParser.m
+c00000000510A9C600000000000000915
+t1359649888
+s2325
+i"CDVConfigParser.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVConnection.h
+c00000000510A9C60000000000000043E
+t1359649888
+s1086
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+i"CDVReachability.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVConnection.m
+c00000000510A9C600000000000000FC0
+t1359649888
+s4032
+i"CDVConnection.h"
+i"CDVReachability.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVContact.h
+c00000000510A9C600000000000001640
+t1359649888
+s5696
+i<Foundation/Foundation.h>
+i<AddressBook/ABAddressBook.h>
+i<AddressBookUI/AddressBookUI.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVContact.m
+c00000000510A9C600000000000013428
+t1359649888
+s78888
+i"CDVContact.h"
+i"NSDictionary+Extensions.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVContacts.h
+c00000000510A9C6000000000000014AA
+t1359649888
+s5290
+i<Foundation/Foundation.h>
+i<AddressBook/ABAddressBook.h>
+i<AddressBookUI/AddressBookUI.h>
+i"CDVPlugin.h"
+i"CDVContact.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVContacts.m
+c00000000510A9C600000000000006DEE
+t1359649888
+s28142
+i"CDVContacts.h"
+i<UIKit/UIKit.h>
+i"NSArray+Comparisons.h"
+i"NSDictionary+Extensions.h"
+i"CDVNotification.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCordovaView.h
+c00000000510A9C60000000000000034E
+t1359649888
+s846
+i<UIKit/UIKit.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCordovaView.m
+c00000000510A9C60000000000000045C
+t1359649888
+s1116
+i"CDVCordovaView.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDebug.h
+c00000000510A9C600000000000000401
+t1359649888
+s1025
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDebugConsole.h
+c00000000510A9C6000000000000003B5
+t1359649888
+s949
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDebugConsole.m
+c00000000510A9C6000000000000004B4
+t1359649888
+s1204
+i"CDVDebugConsole.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDevice.h
+c00000000510A9C6000000000000003B5
+t1359649888
+s949
+i<UIKit/UIKit.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDevice.m
+c00000000510A9C600000000000000BBA
+t1359649888
+s3002
+i<sys/types.h>
+i<sys/sysctl.h>
+i"CDV.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVEcho.h
+c00000000510A9C600000000000000342
+t1359649888
+s834
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVEcho.m
+c00000000510A9C60000000000000064E
+t1359649888
+s1614
+i"CDVEcho.h"
+i"CDV.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVFile.h
+c00000000510A9C600000000000000F3F
+t1359649888
+s3903
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVFile.m
+c00000000510A9C60000000000000B8E0
+t1359649888
+s47328
+i"CDVFile.h"
+i"NSArray+Comparisons.h"
+i"NSDictionary+Extensions.h"
+i"JSONKit.h"
+i"NSData+Base64.h"
+i<MobileCoreServices/MobileCoreServices.h>
+i"CDVAvailability.h"
+i"sys/xattr.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVFileTransfer.h
+c00000000510A9C600000000000000A64
+t1359649888
+s2660
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVFileTransfer.m
+c00000000510A9C6000000000000060EF
+t1359649888
+s24815
+i"CDV.h"
+i<CFNetwork/CFNetwork.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVGlobalization.h
+c00000000510A9C600000000000001903
+t1359649888
+s6403
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVGlobalization.m
+c00000000510A9C600000000000008567
+t1359649888
+s34151
+i"CDVGlobalization.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVInAppBrowser.h
+c00000000510A9C600000000000000993
+t1359649888
+s2451
+i"CDVPlugin.h"
+i"CDVInvokedUrlCommand.h"
+i"CDVScreenOrientationDelegate.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVInAppBrowser.m
+c00000000510A9D680000000000004826
+t1359650152
+s18470
+i"CDVInAppBrowser.h"
+i"CDVPluginResult.h"
+i"CDVViewController.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVInvokedUrlCommand.h
+c00000000510A9C600000000000000907
+t1359649888
+s2311
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVInvokedUrlCommand.m
+c00000000510A9C600000000000000D7B
+t1359649888
+s3451
+i"CDVInvokedUrlCommand.h"
+i"JSONKit.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLocalStorage.h
+c00000000510A9C6000000000000006E4
+t1359649888
+s1764
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLocalStorage.m
+c00000000510A9C60000000000000517F
+t1359649888
+s20863
+i"CDVLocalStorage.h"
+i"CDV.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLocation.h
+c00000000510A9C600000000000000E2C
+t1359649888
+s3628
+i<UIKit/UIKit.h>
+i<CoreLocation/CoreLocation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLocation.m
+c00000000510A9C600000000000005E82
+t1359649888
+s24194
+i"CDVLocation.h"
+i"CDVViewController.h"
+i"NSArray+Comparisons.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLogger.h
+c00000000510A9C600000000000000377
+t1359649888
+s887
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLogger.m
+c00000000510A9C600000000000000488
+t1359649888
+s1160
+i"CDVLogger.h"
+i"CDV.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVNotification.h
+c00000000510A9C6000000000000004B5
+t1359649888
+s1205
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<AudioToolbox/AudioServices.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVNotification.m
+c00000000510A9C600000000000000D57
+t1359649888
+s3415
+i"CDVNotification.h"
+i"NSDictionary+Extensions.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVPlugin.h
+c00000000510A9C600000000000000903
+t1359649888
+s2307
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"CDVPluginResult.h"
+i"NSMutableArray+QueueAdditions.h"
+i"CDVCommandDelegate.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVPlugin.m
+c00000000510A9C600000000000001531
+t1359649888
+s5425
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVPluginResult.h
+c00000000510A9C600000000000000989
+t1359649888
+s2441
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVPluginResult.m
+c00000000510A9C60000000000000125B
+t1359649888
+s4699
+i"CDVPluginResult.h"
+i"JSONKit.h"
+i"CDVDebug.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVReachability.h
+c00000000510A9C600000000000000FF4
+t1359649888
+s4084
+i<Foundation/Foundation.h>
+i<SystemConfiguration/SystemConfiguration.h>
+i<netinet/in.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVReachability.m
+c00000000510A9C6000000000000026CE
+t1359649888
+s9934
+i<sys/socket.h>
+i<netinet/in.h>
+i<netinet6/in6.h>
+i<arpa/inet.h>
+i<ifaddrs.h>
+i<netdb.h>
+i<CoreFoundation/CoreFoundation.h>
+i"CDVReachability.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+c00000000510A9C600000000000000408
+t1359649888
+s1032
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVSound.h
+c00000000510A9C600000000000000C66
+t1359649888
+s3174
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioServices.h>
+i<AVFoundation/AVFoundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVSound.m
+c00000000510A9C600000000000005F8D
+t1359649888
+s24461
+i"CDVSound.h"
+i"CDVViewController.h"
+i"NSArray+Comparisons.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVSplashScreen.h
+c00000000510A9C6000000000000003CB
+t1359649888
+s971
+i<Foundation/Foundation.h>
+i"CDVPlugin.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVSplashScreen.m
+c00000000510A9C60000000000000060C
+t1359649888
+s1548
+i"CDVSplashScreen.h"
+i"CDVViewController.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVURLProtocol.h
+c00000000510A9C6000000000000004E3
+t1359649888
+s1251
+i<Foundation/Foundation.h>
+i"CDVAvailability.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVURLProtocol.m
+c00000000510A9C600000000000001E49
+t1359649888
+s7753
+i"CDVURLProtocol.h"
+i"CDVCommandQueue.h"
+i"CDVWhitelist.h"
+i"CDVViewController.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVViewController.h
+c00000000510A9C600000000000000C29
+t1359649888
+s3113
+i"CDVCordovaView.h"
+i"JSONKit.h"
+i"CDVAvailability.h"
+i"CDVInvokedUrlCommand.h"
+i"CDVCommandDelegate.h"
+i"CDVWhitelist.h"
+i"CDVScreenOrientationDelegate.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVViewController.m
+c00000000510A9C600000000000009829
+t1359649888
+s38953
+i<objc/message.h>
+i"CDV.h"
+i"CDVCommandQueue.h"
+i"CDVCommandDelegateImpl.h"
+i"CDVConfigParser.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVWhitelist.h
+c00000000510A9C60000000000000052D
+t1359649888
+s1325
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVWhitelist.m
+c00000000510A9C600000000000001A87
+t1359649888
+s6791
+i"CDVWhitelist.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/JSON/JSONKit.h
+c00000000510A9C600000000000002F65
+t1359649888
+s12133
+i<stddef.h>
+i<stdint.h>
+i<limits.h>
+i<TargetConditionals.h>
+i<AvailabilityMacros.h>
+i<Foundation/NSArray.h>
+i<Foundation/NSData.h>
+i<Foundation/NSDictionary.h>
+i<Foundation/NSError.h>
+i<Foundation/NSObjCRuntime.h>
+i<Foundation/NSString.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/JSON/JSONKit.m
+c00000000510A9C60000000000002C627
+t1359649888
+s181799
+i<stdio.h>
+i<stdlib.h>
+i<stdint.h>
+i<string.h>
+i<assert.h>
+i<sys/errno.h>
+i<math.h>
+i<limits.h>
+i<objc/runtime.h>
+i"JSONKit.h"
+i<CoreFoundation/CFString.h>
+i<CoreFoundation/CFArray.h>
+i<CoreFoundation/CFDictionary.h>
+i<CoreFoundation/CFNumber.h>
+i<Foundation/NSArray.h>
+i<Foundation/NSAutoreleasePool.h>
+i<Foundation/NSData.h>
+i<Foundation/NSDictionary.h>
+i<Foundation/NSException.h>
+i<Foundation/NSNull.h>
+i<Foundation/NSObjCRuntime.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSArray+Comparisons.h
+c00000000510A9C600000000000000392
+t1359649888
+s914
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSArray+Comparisons.m
+c00000000510A9C6000000000000004D8
+t1359649888
+s1240
+i"NSArray+Comparisons.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSData+Base64.h
+c00000000510A9C60000000000000037D
+t1359649888
+s893
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSData+Base64.m
+c00000000510A9C6000000000000022B4
+t1359649888
+s8884
+i"NSData+Base64.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSDictionary+Extensions.h
+c00000000510A9C6000000000000005DA
+t1359649888
+s1498
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSDictionary+Extensions.m
+c00000000510A9C600000000000001056
+t1359649888
+s4182
+i"NSDictionary+Extensions.h"
+i<math.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+c00000000510A9C6000000000000003A0
+t1359649888
+s928
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
+c00000000510A9C600000000000000584
+t1359649888
+s1412
+i"NSMutableArray+QueueAdditions.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/UIDevice+Extensions.h
+c00000000510A9C600000000000000476
+t1359649888
+s1142
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/UIDevice+Extensions.m
+c00000000510A9C600000000000000620
+t1359649888
+s1568
+i<UIKit/UIKit.h>
+i"UIDevice+Extensions.h"
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/CordovaLib_Prefix.pch
+c00000000510A9C600000000000000346
+t1359649888
+s838
+i<Foundation/Foundation.h>
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVAccelerometer.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVBattery.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCamera.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCapture.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConnection.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVContact.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVContacts.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCordovaView.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVDebugConsole.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVDevice.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVEcho.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVFile.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVFileTransfer.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVGlobalization.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInAppBrowser.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocation.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLogger.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVNotification.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVReachability.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVSound.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVSplashScreen.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/Cordova.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/JSONKit.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDV.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVAccelerometer.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVAvailability.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVBattery.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVCamera.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVCapture.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVCommandDelegate.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVCommandDelegateImpl.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVCommandQueue.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVConnection.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVContact.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVContacts.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVCordovaView.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVDebug.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVDebugConsole.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVDevice.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVEcho.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVFile.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVFileTransfer.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVGlobalization.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVInAppBrowser.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVInvokedUrlCommand.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVLocalStorage.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVLocation.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVLogger.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVNotification.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVPlugin.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVPluginResult.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVReachability.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVScreenOrientationDelegate.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVSound.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVSplashScreen.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVURLProtocol.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVViewController.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/CDVWhitelist.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/JSONKit.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/NSArray+Comparisons.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/NSData+Base64.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/NSDictionary+Extensions.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/NSMutableArray+QueueAdditions.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/include/Cordova/UIDevice+Extensions.h
+t2
+s0
+
+N/Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/libCordova.a
+t2
+s0
+
 N/var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-arcgdqqlejmnegalhpvoszwdufoa/CordovaLib_Prefix.pch.pth
+t2
+s0
+
+N/var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-bwhvqfkfuspugubjjtrtzmlpnlcm/CordovaLib_Prefix.pch.pth
+t2
+s0
+
+N/var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-edbayssmamfioacdtyanficgpbdh/CordovaLib_Prefix.pch.pth
 t2
 s0
 
@@ -1222,112 +2199,223 @@ s0
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVAccelerometer.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVAccelerometer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVAccelerometer.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVAccelerometer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVBattery.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVBattery.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVBattery.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVBattery.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCamera.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVCamera.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCamera.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCamera.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCapture.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVCapture.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCapture.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCapture.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVCommandDelegateImpl.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandDelegateImpl.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandDelegateImpl.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVCommandQueue.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCommandQueue.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCommandQueue.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVConfigParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConfigParser.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVConfigParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConnection.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVConnection.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVConnection.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVConnection.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVContact.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVContact.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVContact.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVContact.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVContacts.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVContacts.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVContacts.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVContacts.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCordovaView.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVCordovaView.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVCordovaView.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVCordovaView.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVDebugConsole.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVDebugConsole.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVDebugConsole.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDebugConsole.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVDevice.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVDevice.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVDevice.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVDevice.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVEcho.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVEcho.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVEcho.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVEcho.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVFile.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVFile.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVFile.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVFile.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVFileTransfer.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVFileTransfer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVFileTransfer.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVFileTransfer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVGlobalization.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVGlobalization.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVGlobalization.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVGlobalization.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInAppBrowser.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVInAppBrowser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInAppBrowser.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVInAppBrowser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVInvokedUrlCommand.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVInvokedUrlCommand.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVInvokedUrlCommand.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVLocalStorage.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocalStorage.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLocalStorage.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocation.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVLocation.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLocation.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLocation.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLogger.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVLogger.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVLogger.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVLogger.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVNotification.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVNotification.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVNotification.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVNotification.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVPlugin.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPlugin.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVPlugin.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVPluginResult.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVPluginResult.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVPluginResult.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVReachability.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVReachability.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVReachability.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVReachability.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVSound.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVSound.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVSound.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVSound.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVSplashScreen.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVSplashScreen.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVSplashScreen.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVSplashScreen.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVURLProtocol.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVURLProtocol.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVURLProtocol.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVViewController.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/CDVWhitelist.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/CDVWhitelist.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/CDVWhitelist.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/JSONKit.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/JSON/JSONKit.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/JSONKit.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/JSON/JSONKit.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/NSArray+Comparisons.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSArray+Comparisons.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSArray+Comparisons.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/NSData+Base64.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSData+Base64.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSData+Base64.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/NSDictionary+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSDictionary+Extensions.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSDictionary+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/NSMutableArray+QueueAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/NSMutableArray+QueueAdditions.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/NSMutableArray+QueueAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/Classes/UIDevice+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/CordovaLib.build/Debug-iphoneos/CordovaLib.build/Objects-normal/armv7/UIDevice+Extensions.o /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/Classes/UIDevice+Extensions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCpHeader build/Debug-iphoneos/include/Cordova/CDV.h Classes/CDV.h
@@ -1456,7 +2544,16 @@ r0
 CLibtool /Users/zhongliang/Desktop/FYP/Programming/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/libCordova.a normal armv7
 r0
 
+CLibtool /Users/zhongliang/Desktop/TechnicalAnalysis/CordovaLib/build/Debug-iphoneos/libCordova.a normal armv7
+r0
+
 CProcessPCH /var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-arcgdqqlejmnegalhpvoszwdufoa/CordovaLib_Prefix.pch.pth CordovaLib_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CProcessPCH /var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-bwhvqfkfuspugubjjtrtzmlpnlcm/CordovaLib_Prefix.pch.pth CordovaLib_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CProcessPCH /var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-edbayssmamfioacdtyanficgpbdh/CordovaLib_Prefix.pch.pth CordovaLib_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CProcessPCH /var/folders/vx/4wfcvz_x3dzcr8_4_jykydpc0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/CordovaLib_Prefix-frvvyycjjrlgfuexljuqkmtgckfp/CordovaLib_Prefix.pch.pth CordovaLib_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler

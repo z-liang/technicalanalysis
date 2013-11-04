@@ -35,9 +35,9 @@ function generateHS(n){
         
         hs[0] = -1;
         hs[segLength] = 0.5;
-        hs[segLength*2] = 0;
+        hs[segLength*2] = -0.5;
         hs[segLength*3] = 1;
-        hs[segLength*4] = 0;
+        hs[segLength*4] = -0.5;
         hs[segLength*5] = 0.5;
         hs[segLength*6] = -1;
         
@@ -71,9 +71,9 @@ function generateIHS(n){
         
         ihs[0] = 1;
         ihs[segLength] = -0.5;
-        ihs[segLength*2] = 0.2;
+        ihs[segLength*2] = 0.5;
         ihs[segLength*3] = -1;
-        ihs[segLength*4] = 0.2;
+        ihs[segLength*4] = 0.5;
         ihs[segLength*5] = -0.5;
         ihs[segLength*6] = 1;
         
@@ -107,7 +107,7 @@ function generateDT(n){
         
         dt[0] = -1;
         dt[segLength] = 1;
-        dt[segLength*2] = 0;
+        dt[segLength*2] = -0.5;
         dt[segLength*3] = 1;
         dt[segLength*4] = -1;
         
@@ -141,7 +141,7 @@ function generateDB(n){
         
         db[0] = 1;
         db[segLength] = -1;
-        db[segLength*2] = 0;
+        db[segLength*2] = 0.5;
         db[segLength*3] = -1;
         db[segLength*4] = 1;
         
@@ -175,9 +175,9 @@ function generateTT(n){
         
         tt[0] = -1;
         tt[segLength] = 1;
-        tt[segLength*2] = 0;
+        tt[segLength*2] = -0.5;
         tt[segLength*3] = 1;
-        tt[segLength*4] = 0;
+        tt[segLength*4] = -0.5;
         tt[segLength*5] = 1;
         tt[segLength*6] = -1;
         
@@ -210,11 +210,11 @@ function generateTB(n){
         var segLength = Math.floor(n/6);
         
         tb[0] = 1;
-        tb[segLength] = -0.5;
+        tb[segLength] = -1;
         tb[segLength*2] = 0.5;
-        tb[segLength*3] = -0.5;
+        tb[segLength*3] = -1;
         tb[segLength*4] = 0.5;
-        tb[segLength*5] = -0.5;
+        tb[segLength*5] = -1;
         tb[segLength*6] = 1;
         
         for(var i = 0; i< 6; i++){

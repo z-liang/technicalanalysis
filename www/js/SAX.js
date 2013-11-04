@@ -80,13 +80,13 @@ function computeSAXDist(data, query, breakPoints, n){
         if(Math.abs(data[i]-query[i])>1){
             var first = Math.max(data[i],query[i])-1;
             var second = Math.min(data[i],query[i]);
-            var currDist = Math.round((breakPoints[first]-breakPoints[second])*1000)/1000;
-            // alert(currDist);
-            sumdist = sumdist + currDist^2;
+            var currDist = Math.round((breakPoints[first]-breakPoints[second])*10000)/10000;
+            //alert(currDist);
+            sumdist = sumdist + Math.pow(currDist,2);
         }
     }
     dist = Math.sqrt(n/w)*Math.sqrt(sumdist);
-    
+    //alert(dist);
     return dist;
 }
 
