@@ -35,7 +35,7 @@ function computeStochasticOscillator(data, n){
 
    for (var i = 0; i<data.basic.length-n; i++){
        kResult[i] = new Array(2);
-       kResult[i][0] = data.basic[i+n][0];
+       kResult[i][0] = data.basic[i+n-1][0];
        var max = data.extra[i][0];
        var min = data.extra[i][1];
        for (j=i+1;j<i+n;j++){
@@ -46,7 +46,7 @@ function computeStochasticOscillator(data, n){
                min = data.extra[j][1];
            }
        }
-       kResult[i][1] = 100*(data.basic[i+n][1]-min)/(max-min);
+       kResult[i][1] = 100*(data.basic[i+n-1][1]-min)/(max-min);
     }
     
     for (var i = 0; i <kResult.length-2;i++){

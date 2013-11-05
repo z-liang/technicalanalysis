@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html class="ui-mobile">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Technical Analysis</title>
-        <meta name = "format-detection" content = "telephone=no"/>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
         <link rel="stylesheet" href="css/data.css" type="text/css" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" media="all" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
         <link rel="stylesheet" href="flot-flot-f0e78fc/layout.css" type="text/css"/>
         <link rel="stylesheet" href="css/csvtable.css" type="text/css"/>
 
@@ -22,10 +20,16 @@
         <!--libaries from app example-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 
-        <script type="text/javascript" src="flot-flot-f0e78fc/jquery.js"></script>
         <script type="text/javascript" src="flot-flot-f0e78fc/jquery.flot.js"></script>
+           
+        <script>
+            $.ajaxSetup ({
+            // Disable caching of AJAX responses
+                cache: false
+            });
+        </script>
             
         <script>
             var rawdata;
@@ -39,29 +43,20 @@
             var tickers;
             
             
-            function requestData(){
-                tickers = document.getElementById("ticker").value.split(",");
-                sendMultiRequest(function(data){
-                            rawdata = data;
-                            plotBasicChart(data);
-                            });
-                // Fill the dropdown box
-                var selector = document.getElementById("stockSelector");
-                var selector2 = document.getElementById("stockSelector2");
-                removeAllOptions(selector);
-                removeAllOptions(selector2);
-                for (var i = 0; i<tickers.length; i++){
-                    addOption(selector, i.toString(), tickers[i]);
-                    addOption(selector2, i.toString(), tickers[i]);
-                }
-                //$("#stockSelector").selectmenu('refresh');
-                //$("#stockSelector2").selectmenu('refresh');
-                plotTemplate();
-            };
+            
 
             $(function(){
-              $("#dataBtn").click(function(){
-                                  requestData();
+              $("#dataBtn").click(function(e){
+                                  var valid = requestData();
+                                  /*if(valid){
+                                    $.mobile.changePage("#introduction", {allowSamePageTransition:true,reloadPage:false,changeHash:true,transition:"slide"});
+                                  }*/
+                                  //alert("before");
+                                  /*$("#stockSelector").selectedIndex = 0;
+                                  $("#stockSelector").selectmenu("refresh");
+                                  $("#stockSelector2").selectedIndex = 0;
+                                  $("#stockSelector2").selectmenu("refresh");
+                                  alert("after");*/
                                   });
               
               $("#plotBtn").click(function(){
@@ -86,8 +81,62 @@
                                      var data = rawdata[selectedIndex];
                                      matchPattern(data,patterns);
                                      });
-              });
+              $("#patFoundSelector").change(function(e){
+                                            var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                                            var data = rawdata[selectedIndex];
+                                            var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
+                                            fillMatchResultSelectors(selectedPattern);
+                                            var selectedMatch = document.getElementById("matchSelector").selectedIndex;
+                                            $("#matchSelector").selectmenu("refresh");
+                                            $("input:radio[name='zoomRadioBtn'][value='zoomin']").attr("checked", false);
+                                            $("input:radio[name='zoomRadioBtn']").checkboxradio("refresh");
+                                            
+                                            if(selectedPattern ==0){
+                                                $("#matchSelector").selectmenu("disable");
+                                                $("input:radio[name='zoomRadioBtn'][value='zoomin']").checkboxradio("disable");
+                                            }else{
+                                                $("#matchSelector").selectmenu("enable");
+                                            }
+                                            plotPattern(data, selectedPattern, selectedMatch);
+                                     });
+              $("#matchSelector").change(function(e){
+                                         var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
+                                         var data = rawdata[selectedIndex];
+                                         var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
+                                         var selectedMatch = document.getElementById("matchSelector").selectedIndex;
+                                         if(selectedPattern ==0 || selectedMatch == 0){
+                                            $("input:radio[name='zoomRadioBtn'][value='zoomin']").attr("checked", false);
+                                            $("input:radio[name='zoomRadioBtn']").checkboxradio("refresh");
+                                            $("input:radio[name='zoomRadioBtn'][value='zoomin']").checkboxradio('disable');
+                                         }else{
+                                            $("input:radio[name='zoomRadioBtn'][value='zoomin']").checkboxradio('enable');
+                                         }
+                                         plotPattern(data, selectedPattern, selectedMatch);
+                                         });
+              
+              function requestData(){
+                tickers = document.getElementById("ticker").value.split(",");
+                var valid = sendMultiRequest(function(data){
+                                 rawdata = data;
+                                 plotBasicChart(data);
+                                 });
+                // Fill the dropdown box
+                var selector = document.getElementById("stockSelector");
+                var selector2 = document.getElementById("stockSelector2");
+                removeAllOptions(selector);
+                removeAllOptions(selector2);
+                for (var i = 0; i<tickers.length; i++){
+                    addOption(selector, i.toString(), tickers[i]);
+                    addOption(selector2, i.toString(), tickers[i]);
+                }
+                //selector.selectedIndex = 0;
+                //selector2.selectedIndex = 0;
+                plotTemplate();
+                return valid;
+              };
+            });
             
+    
             /*$(function(){
               $("#similarityBtn").click(function(){
                                         sendRequest(function(data){
@@ -97,23 +146,9 @@
                                   });
               
               });*/
-            
-            function plotBasicChart(data){
-                var plotdata = new Array();
-                
-                for(var i=0; i<data.length; i++){
-                    var currData = data[i];
-                    plotdata.push({label:currData.label, data:currData.basicData});
-                }
-                var ph1 = document.getElementById("basicPlot");
-                $.plot(ph1, plotdata, {
-                       xaxis: {mode: "time", minTickSize:[1, "month"]},
-                       yaxis:{labelWidth:22},
-                       legend:{backgroundColor: null, position:"nw"}
-                       });
-            }
-            
+
             function plotAccordingToChoices(flag){
+
                 var selectedIndex = document.getElementById("stockSelector").selectedIndex;
                 var data = rawdata[selectedIndex];
                 
@@ -148,17 +183,25 @@
                          $("#solabel").hide();
                          $("#placeholder3").hide();
                      }
+                    
+                    if (document.getElementById("idvolume").checked == true){
+                        $("#vollabel").show();
+                        $("#volPlot").show();
+                        drawVolume(data, "#volPlot");
+                    } else{
+                        $("#vollabel").hide();
+                        $("#volPlot").hide();
+                    }
                 }
             };
-            
             
             function drawMA(plotdata,data){
                 var n = parseInt($("#madays").val(),10);
                 var ma = {label:"Moving Average",
-                            data:computeMovingAverage(data.basicData, parseInt(n))};
+                    data:computeMovingAverage(data.basicData, parseInt(n))};
                 plotdata.push(ma);
                 $.plot($("#placeholder1"), plotdata, {
-                       xaxis: { mode: "time", minTickSize:[1, "month"]},
+                       xaxis: { mode: "time",minTickSize:[1, "month"]},
                        yaxis:{ labelWidth:22},
                        legend:{ backgroundColor: null, position:"nw"}
                        });
@@ -180,7 +223,8 @@
             };
             
             function drawStochasticOscillator(data){
-                var scResult = computeStochasticOscillator({basic:data.basicData, extra:data.extraData}, 14);
+                var n = parseInt($("#sodays").val(),10);
+                var scResult = computeStochasticOscillator({basic:data.basicData, extra:data.extraData}, n);
                 var so = [{label:"%K", data: scResult.k, color: 4},
                           {label:"%D", data: scResult.d, color: 2}];
                 var markings = [
@@ -192,10 +236,25 @@
                        legend:{position:"nw"},
                        series:{shadow:0},
                        xaxis: { mode: "time", minTickSize:[1, "month"], min: minDate},
-                       yaxis: { labelWidth:22},
+                       yaxis: { min:0, max:100, labelWidth:22},
                        grid: { markings: markings }
                        });
             };
+            
+            function drawVolume(data, loc){
+                var n = data.volume.length;
+                var vol = new Array(n);
+                for(var i=0; i<n;i++){
+                    vol[i] = new Array(2);
+                    vol[i][0] = data.basicData[i][0];
+                    vol[i][1] = data.volume[i];
+                }
+                var volData = [{data:vol, color:6, lines:{show:true}}];
+                $.plot($(loc),volData, {
+                       xaxis: { mode: "time", minTickSize:[1, "month"]},
+                       yaxis: { labelWidth:22}
+                       });
+            }
             
             function matchPattern(data, patterns){
                 results = new Array();
@@ -236,10 +295,9 @@
                 
                 fillMatchResultSelectors(0);
 
-                document.getElementById("zoomin").disabled = true;
-                //$("#zoomin").checkboxradio('disable');
                 plotPattern(data, 0, 0);
             }
+
             
             function fillMatchResultSelectors(selectedPattern){
                 var selector = document.getElementById("matchSelector");
@@ -262,9 +320,11 @@
                     }
                 }
                 document.getElementById("noOfMatches").innerHTML = "<label>Number of Matches Found: "+(k-1)+"</label>";
-                //selector.selectedIndex = 0;
-                selector.value = "0";
+                selector.selectedIndex = 0;
+                document.getElementById("zoomin").disabled = true;
             }
+            
+            
             
             function plotTemplate(){
                 patternDays = parseInt($("#patternDays").val(),10);
@@ -327,8 +387,9 @@
                     }
 
                     $.plot($("#patternResultPlot"), plotData, {
+                           legend:{backgroundColor: null},
                            xaxis:{mode:"time"},
-                           yaxis:{labelWidth:20}
+                           yaxis:{labelWidth:22}
                            });
                 } else {
                     document.getElementById("patternResultPlot").style.display = "none";
@@ -391,69 +452,19 @@
             }
 
             window.onload = function(){
-                document.getElementById("patFoundSelector").onchange = patFoundSelectorChanged;
-                document.getElementById("matchSelector").onchange = matchSelectorChanged;
                 document.getElementById("patternSelector").onchange  = plotTemplate;
                 document.getElementById("zoomout").onchange  = zoomInOutChanged;
                 document.getElementById("zoomin").onchange  = zoomInOutChanged;
             };
-
-            function patFoundSelectorChanged(){
-                var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
-                var data = rawdata[selectedIndex];
-                var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
-                fillMatchResultSelectors(selectedPattern);
-                var selectedMatch = document.getElementById("matchSelector").selectedIndex;
-                
-                if(selectedPattern ==0){
-                    document.getElementById("matchSelector").disabled=true;
-                    //$('#matchSelector').selectmenu('disable');
-                    document.getElementById("zoomin").disabled=true;
-                    //$('#zoomin').checkboxradio('disable');
-                }else{
-                    document.getElementById("matchSelector").disabled=false;
-                    //$('#matchSelector').selectmenu('enable');
-                    if(selectedMatch==0){
-                        document.getElementById("zoomin").disabled=true;
-                        //$('#zoomin').checkboxradio('disable');
-                    }else{
-                        document.getElementById("zoomin").disabled=false;
-                        //$('#zoomin').checkboxradio('enable');
-                    }
-                }
-                plotPattern(data, selectedPattern, selectedMatch);
-            }
-            
-            function matchSelectorChanged(){
-                var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
-                var data = rawdata[selectedIndex];
-                var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
-                var selectedMatch = document.getElementById("matchSelector").selectedIndex;
-                if(selectedPattern ==0 || selectedMatch == 0){
-                    document.getElementById("zoomin").disabled=true;
-                    //$('#zoomin').checkboxradio('disable');
-                }else{
-                    document.getElementById("zoomin").disabled=false;
-                    //$('#zoomin').checkboxradio('enable');
-                }
-                plotPattern(data, selectedPattern, selectedMatch);
-            }
             
             function zoomInOutChanged(){
                 var selectedIndex = document.getElementById("stockSelector2").selectedIndex;
                 var data = rawdata[selectedIndex];
                 var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
                 var selectedMatch = document.getElementById("matchSelector").selectedIndex;
-                if(selectedPattern ==0 || selectedMatch == 0){
-                    document.getElementById("zoomin").disabled=true;
-                    //$('#zoomin').checkboxradio('disable');
-                }else{
-                    document.getElementById("zoomin").disabled=false;
-                    //$('#zoomin').checkboxradio('enable');
-                }
+
                 plotPattern(data, selectedPattern, selectedMatch);
             }
-            
         </script>
             
     </head>
@@ -472,6 +483,7 @@
                     <input type="date" name="fromdate" id="fromdate" data-mini="true"/>
                     <label>To date</label><br>
                     <input type = "date" name="todate" id = "todate" data-mini="true"/><br>
+                    <!--div data-role="button" id="dataBtn" name="dataBtn">Retrieve Data</div-->
                     <a href="#introduction" data-role="button" id="dataBtn" name="dataBtn">Retrieve Data</a>
                 </form>
             </div>
@@ -483,11 +495,10 @@
                 <h1>Basic Chart</h1>
             </div>
             <div data-role="content">
-                <div id="basicPlot" style="width:300px;height:200px;"></div><br><br>
+                <div id="basicPlot" style="width:300px;height:200px;"></div><br><br><br>
                 <ul data-role="listview">
                     <li><a href="#inputform1" data-icon="plus" data-iconpos="notext">Technical Indicators</a> </li>
                     <li><a href="#patterns" data-icon="minus" data-iconpos="notext">Pattern Matching</a> </li>
-                    <!--li><a href="#" data-icon="minus" data-iconpos="notext">Similarity Search</a> </li-->
                 </ul>
             </div>
         </div>
@@ -505,13 +516,15 @@
                     </select><br>
                     <label>Technical Indicators</label>
                     <fieldset data-role="controlgroup">
-                        <input name="ma" id="idma" type="checkbox" type="checkbox"/>
+                        <input name="ma" id="idma" type="checkbox"/>
                         <label for="idma">Moving Average</label>
-                        <input name="macd" id="idmacd" type="checkbox" type="checkbox"/>
+                        <input name="macd" id="idmacd" type="checkbox"/>
                         <label for="idmacd">MACD</label>
-                        <input name="stochastic" id="idstochastic" type="checkbox" type="checkbox"/>
+                        <input name="stochastic" id="idstochastic" type="checkbox"/>
                         <label for="idstochastic">Stochastic Oscillator</label>
                     </fieldset>
+                    <input name="volume" id="idvolume" type="checkbox"/>
+                    <label for="idvolume">Volume</label>
                     <br>
                     <a href="#charts" data-role="button" id="plotBtn" name="plotBtn">Plot Chart</a>
                 </form>
@@ -563,8 +576,9 @@
                  <div id="placeholder2" style="width:300px;height:100px;"></div>
                  <div id="solabel"><h5>Stochastic Oscillator</h5></div>
                  <div id="placeholder3" style="width:300px;height:100px;"></div>
+                <div id="vollabel"><h5>Volume</h5></div>
+                <div id="volPlot" style="width:300px;height:100px;"></div>
             </div>
-
         </div>
         
         <div data-role="page" id="indicatorsPage" title="Input Parameters">
@@ -577,12 +591,15 @@
                 <form>
                     <h4>Moving Average</h4>
                     <label>Number of days:</label><br>
-                    <input type="text" name="madays" id="madays" data-mini="true" value="14">
+                    <input type="text" name="madays" id="madays" data-mini="true" value="14"/>
                     <h4>MACD</h4>
                     <label>Long-term MA:</label><br>
-                    <input type="text" name="macdldays" id="macdldays" data-mini="true" value="26">
+                    <input type="text" name="macdldays" id="macdldays" data-mini="true" value="26"/>
                     <label>Short-term MA:</label><br>
-                    <input type="text" name="macdsdays" id="macdsdays" data-mini="true" value="14">
+                    <input type="text" name="macdsdays" id="macdsdays" data-mini="true" value="14"/>
+                    <h4>Stochastic Fast</h4>
+                    <label>Number of days:</label><br>
+                    <input type="text" name="sodays" id="sodays" data-mini="true" value="14"/>
                 </form>
             </div>
         </div>
@@ -680,6 +697,9 @@
                 </form>
                 <div id="placeholder6" style="width:300px;height:300px;"></div>
             </div>
+        </div-->
+        <!--div data-role="footer">
+            <p>2013</p>
         </div-->
     </body>
 </html>
