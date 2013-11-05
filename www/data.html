@@ -107,10 +107,9 @@
                 }
                 var ph1 = document.getElementById("basicPlot");
                 $.plot(ph1, plotdata, {
-                       xaxis: {
-                        mode: "time",
-                        minTickSize:[1, "month"]
-                       }
+                       xaxis: {mode: "time", minTickSize:[1, "month"]},
+                       yaxis:{labelWidth:22},
+                       legend:{backgroundColor: null, position:"nw"}
                        });
             }
             
@@ -126,11 +125,10 @@
                     } else {
                     var ph1 = document.getElementById("placeholder1");
                     $.plot(ph1, plotdata, {
-                           xaxis: {
-                            mode: "time",
-                            minTickSize:[1, "month"]
-                           }
-                    });
+                           xaxis: { mode: "time", minTickSize:[1, "month"] },
+                           yaxis:{ labelWidth:22},
+                           legend:{ backgroundColor: null, position:"nw"}
+                           });
                     }
                     
                     if (document.getElementById("idmacd").checked == true){
@@ -160,10 +158,9 @@
                             data:computeMovingAverage(data.basicData, parseInt(n))};
                 plotdata.push(ma);
                 $.plot($("#placeholder1"), plotdata, {
-                       xaxis: {
-                       mode: "time",
-                       minTickSize:[1, "month"]
-                       }
+                       xaxis: { mode: "time", minTickSize:[1, "month"]},
+                       yaxis:{ labelWidth:22},
+                       legend:{ backgroundColor: null, position:"nw"}
                        });
             };
             
@@ -174,33 +171,28 @@
                     data:computeMACD(data.basicData, parseInt(sn), parseInt(ln)),
                     bars: {show:true},
                     color: 3};
-                
+                var minDate = getMinDate();
                 $.plot($("#placeholder2"), [macd], {
-                       xaxis: {
-                       mode: "time",
-                       minTickSize:[1, "month"]}
+                       legend:{position:"nw"},
+                       xaxis: {mode: "time",minTickSize:[1, "month"], min:minDate},
+                       yaxis:{ labelWidth:22}
                        });
             };
             
             function drawStochasticOscillator(data){
-                var scResult = computeStochasticOscillator({basic:data.basicData, extra:data.extraData});
-                var so = [{label:"%K",
-                          data: scResult.k,
-                          color: 4},
-                          {label:"%D",
-                          data: scResult.d,
-                          color: 2}];
+                var scResult = computeStochasticOscillator({basic:data.basicData, extra:data.extraData}, 14);
+                var so = [{label:"%K", data: scResult.k, color: 4},
+                          {label:"%D", data: scResult.d, color: 2}];
                 var markings = [
                                 { color: '#C0C0C0', yaxis: { from: 80 } },
                                 { color: '#C0C0C0', yaxis: { to: 20 } }
                                 ];
+                var minDate = getMinDate();
                 $.plot($("#placeholder3"), so, {
+                       legend:{position:"nw"},
                        series:{shadow:0},
-                       xaxis: {
-                       mode: "time",
-                       minTickSize:[1, "month"]
-                       },
-                       yaxis: { min: 0, max: 100 },
+                       xaxis: { mode: "time", minTickSize:[1, "month"], min: minDate},
+                       yaxis: { labelWidth:22},
                        grid: { markings: markings }
                        });
             };
@@ -262,7 +254,6 @@
                             k++;
                         }
                     }
-                    document.getElementById("noOfMatches").innerHTML = "<h5>Number of Matches Found: "+(k-1)+"</h5>";
                 }else{
                     var result = results[selectedPattern-1];
                     for(var j=0; j<result.length; j++){
@@ -270,6 +261,9 @@
                         k++;
                     }
                 }
+                document.getElementById("noOfMatches").innerHTML = "<label>Number of Matches Found: "+(k-1)+"</label>";
+                //selector.selectedIndex = 0;
+                selector.value = "0";
             }
             
             function plotTemplate(){
@@ -298,7 +292,9 @@
                         plotTemp.push({data: template});
                     }
                 }
-                $.plot($("#placeholder5"), plotTemp, {});
+                $.plot($("#placeholder5"), plotTemp, {
+                       yaxis:{labelWidth:15}
+                       });
             }
             
             function plotPattern(data, selectedPattern, selectedMatch){
@@ -331,7 +327,8 @@
                     }
 
                     $.plot($("#patternResultPlot"), plotData, {
-                           xaxis:{mode:"time"}
+                           xaxis:{mode:"time"},
+                           yaxis:{labelWidth:20}
                            });
                 } else {
                     document.getElementById("patternResultPlot").style.display = "none";
@@ -406,8 +403,7 @@
                 var data = rawdata[selectedIndex];
                 var selectedPattern = document.getElementById("patFoundSelector").selectedIndex;
                 fillMatchResultSelectors(selectedPattern);
-               // var selectedMatch = document.getElementById("matchSelector").selectedIndex;
-                document.getElementById("matchSelector").selectedIndex = 0;
+                var selectedMatch = document.getElementById("matchSelector").selectedIndex;
                 
                 if(selectedPattern ==0){
                     document.getElementById("matchSelector").disabled=true;
@@ -636,7 +632,7 @@
                 <label>Length of pattern (days)</label>
                 <input type="text" name="patternDays" id="patternDays" data-mini="true" value="30">
                 <label>Match Criteria: max distance</label>
-                <input type="text" name="threshold" id="threshold" data-mini="true" value="2">
+                <input type="text" name="threshold" id="threshold" data-mini="true" value="1.5">
                 <label>Window step</label>
                 <input type="text" name="windowStep" id="windowStep" data-mini="true" value="2">
             </div>

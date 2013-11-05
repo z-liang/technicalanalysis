@@ -13,28 +13,6 @@ function sendMultiRequest(callback){
 }
 
 function sendRequest(ticker, callback){
-    /**
-     *
-     * CSV Parser credit goes to Brian Huisman, from his blog entry entitled "CSV String to Array in JavaScript":
-     * http://www.greywyvern.com/?post=258
-     *
-     */
-    /*String.prototype.splitCSV = function(sep) {
-        for (var thisCSV = this.split(sep = sep || ","), x = thisCSV.length - 1, tl; x >= 0; x--){
-            if (thisCSV[x].replace(/"\s+$/, '"').charAt(thisCSV[x].length - 1) == '"'){
-                                   if ((tl = thisCSV[x].replace(/^\s*"|"\s*$/g, '')).length > 1 && tl.charAt(0) == '"') {
-                                   thisCSV[x] = thisCSV[x].replace(/^\s*"|"\s*$/g, '').replace(/""/g, '"');
-                                   } else if (x) {
-                                   thisCSV.splice(x - 1, 2, [thisCSV[x - 1], thisCSV[x]].join(sep));
-                                   } else {
-                                   thisCSV = thisCSV.shift().split(sep).concat(thisCSV);
-                                   }
-                                   } else {
-                                   thisCSV[x].replace(/""/g, '"');
-                                   }
-                                   }
-                                   return thisCSV;
-                                   };*/
                                    
     String.prototype.parseDate = function (){
                                    var parts = this.split("-");
@@ -51,17 +29,17 @@ function sendRequest(ticker, callback){
     fromDate = document.getElementById("fromdate").value.split("-");
     toDate = document.getElementById("todate").value.split("-");
 
-        var url = "http://ichart.yahoo.com/table.csv?s="+ticker;
-        if (fromDate.length > 0){
-            url = url + "&a="+(fromDate[1]-1)+"&b="+fromDate[2]+"&c="+fromDate[0];
-        }
-        if (toDate.length > 0){
-            url = url + "&d="+(toDate[1]-1)+"&e="+toDate[2]+"&f="+toDate[0];
-        }
-        var req = new XMLHttpRequest();
+    var url = "http://ichart.yahoo.com/table.csv?s="+ticker;
+    if (fromDate.length > 0){
+        url = url + "&a="+(fromDate[1]-1)+"&b="+fromDate[2]+"&c="+fromDate[0];
+    }
+    if (toDate.length > 0){
+        url = url + "&d="+(toDate[1]-1)+"&e="+toDate[2]+"&f="+toDate[0];
+    }
+    var req = new XMLHttpRequest();
         
-        req.open("GET",url,false);
-        req.send();
+    req.open("GET",url,false);
+    req.send();
     if(req.status === 200){
        
         // Request successful, read the response
@@ -71,7 +49,8 @@ function sendRequest(ticker, callback){
         var sodata = new Array();
         var volumedata = new Array();
         var count = 0;
-
+        
+        // Parse the csv data
         $.each(lines, function(lineCount, line){
                if (lineCount > 0){
                 count = lineCount - 1;
@@ -80,12 +59,28 @@ function sendRequest(ticker, callback){
                     rawdata[count] = new Array(2);
                     sodata[count] = new Array(2);
                     rawdata[count][0] = (items[0].parseDate()).getTime();
-                    rawdata[count][1] = items[6];
-                    sodata[count][0] = items[2];
-                    sodata[count][1] = items[3];
-                    volumedata[count] = items[4];
+                    rawdata[count][1] = parseFloat(items[6]);
+                    sodata[count][0] = parseFloat(items[2]);
+                    sodata[count][1] = parseFloat(items[3]);
+                    volumedata[count] = parseFloat(items[4]);
                 }}});
-        var data = {label: ticker, basicData: rawdata, extraData:sodata, volume: volumedata};
+        
+        // Reorder the raw data into correct order
+        var sortedRawData = new Array(count);
+        var sortedExtraData = new Array(count);
+        var sortedVolumeData = new Array(count);
+        for(var i = 0; i < count ; i++){
+            var k = count - i- 1;
+            sortedRawData[i] = new Array(2);
+            sortedExtraData[i] = new Array(2);
+            sortedRawData[i][0] = rawdata[k][0];
+            sortedRawData[i][1] = rawdata[k][1];
+            sortedExtraData[i][0] = sodata[k][0];
+            sortedExtraData[i][1] = sodata[k][1];
+            sortedVolumeData[i] = volumedata[k];
+        }
+        //var data = {label: ticker, basicData: rawdata, extraData:sodata, volume: volumedata};
+        var data = {label:ticker, basicData: sortedRawData, extraData: sortedExtraData, volume: sortedVolumeData};
 
         callback(data);
     }else {
@@ -94,4 +89,10 @@ function sendRequest(ticker, callback){
         return;
     }
     String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
+}
+
+function getMinDate(){
+    var fromDate = document.getElementById("fromdate").value;
+    var minDate = (new Date(fromDate)).getTime();
+    return minDate;
 }

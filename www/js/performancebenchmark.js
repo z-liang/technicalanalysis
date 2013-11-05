@@ -11,7 +11,6 @@ function bruteForceMatchPattern(data, query, epsilon, windowStep){
         var normalizedData = bruteForceNormalize(dataSeg);
         // Compute brute force distance
         var dist = bruteForceDistance(normalizedData.data, normalizedPat);
-        //alert(dist);
         if(dist <= epsilon){
             // Compose the data for plotting
             var dataFound = new Array(m);
@@ -37,19 +36,19 @@ function bruteForceNormalize(data){
     
     // Compute mean
     for (var i = 0; i < n; i++){
-        sum = sum + parseFloat(data[i][1]);
+        sum = sum + data[i][1];
     }
     mean = sum/n;
     // Compute standard deviation
     sum = 0;
     for (var i = 0; i< n; i++){
-        sum = sum + Math.pow(parseFloat(data[i][1])-mean,2);
+        sum = sum + Math.pow(data[i][1]-mean,2);
     }
     sd = Math.sqrt(sum/n);
     // Normalize the mean to be 0 and standard deviation to be 1
     var nData = new Array(n);
     for (var i = 0; i<n; i++){
-        nData[i]=(parseFloat(data[n-1-i][1])-mean)/sd;
+        nData[i]=(data[i][1]-mean)/sd;
     }
     
     var returnVal = {data: nData, dataMean: mean, dataSD: sd};
@@ -90,7 +89,6 @@ function bruteForceDistance(data, query){
         var s = data[i];
         var q = query[i];
         sum += Math.pow(s-q,2);
-       // alert(sum);
     }
     var dist = Math.sqrt(sum);
     return dist;
@@ -104,6 +102,8 @@ function bruteForceDenormalizePattern(pat, m, sd){
     }
     return denormalized;
 }
+
+/* The following functions are implemented to do the rule-based pattern matching. */
 
 function ruleBasedMatchPattern(data, pat, m, windowStep){
     var n = data.length;
@@ -151,18 +151,10 @@ function ruleBasedMatchPattern(data, pat, m, windowStep){
             k++;
         }
     }
-   // alert(results.length);
     return results;
 }
 
 function composeRuleBasedPattern(pips){
-    /*var m = data.length;
-    var pat = new Array(m);
-    for(var i=0; i<m; i++){
-        pat[i] = data[i][1];
-    }
-    return pat;*/
-    
     var k = pips.length;
     var pat = new Array(k);
     for(var i=0; i<k; i++){
@@ -177,25 +169,18 @@ function findPIPs(data, k){
     var n = data.length;
     var pips = new Array();
     
-    pips.push({y: parseFloat(data[0][1]), x: parseFloat(data[0][0])});
-    pips.push({y: parseFloat(data[n-1][1]), x:parseFloat(data[n-1][0])});
+    pips.push({y: data[0][1], x: data[0][0]});
+    pips.push({y: data[n-1][1], x:data[n-1][0]});
     
     var count = 2;
     var pipCounted = new Array();
     
     while(count<k){
-       // alert(count);
         var maxDist = 0;
         var maxIdx = 1;
         for(var i=1; i<n-1; i++){
             if(pipCounted.indexOf(i)==-1){
-                /*if(i==3){
-                    alert("wrong" + pipCounted.indexOf(i));
-                }
-                if(i==1){
-                    alert("go on");
-                }*/
-                var point = {y: parseFloat(data[i][1]), x:parseFloat(data[i][0])};
+                var point = {y: data[i][1], x:data[i][0]};
                 var adjacent = findAdjacentPoints(pips, point);
                 var dist = computePointDist(adjacent.left, adjacent.right, point);
                 if(dist>maxDist){
@@ -204,18 +189,12 @@ function findPIPs(data, k){
                 }
             }
         }
-        //alert("herer " + maxIdx);
-        pips.push({y: parseFloat(data[maxIdx][1]), x:parseFloat(data[maxIdx][0])});
+        pips.push({y: data[maxIdx][1], x:data[maxIdx][0]});
         pipCounted.push(maxIdx);
         
         count ++;
     }
     pips.sort(function(a,b){return a.x-b.x});
-    /*for(var i=0; i<pips.length; i++){
-        alert(pips[i].x);
-        alert(pips[i].y);
-    }*/
-    //alert(pips.length);
     return pips;
 }
 
@@ -227,7 +206,6 @@ function findAdjacentPoints(pips, p){
     tempPips.push(p);
     tempPips.sort(function(a,b){return a.x-b.x});
     var index = tempPips.indexOf(p);
-    //alert(index);
     return {left: tempPips[index-1], right:tempPips[index+1]};
 }
 

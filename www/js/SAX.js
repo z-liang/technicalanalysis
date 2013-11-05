@@ -100,19 +100,19 @@ function normalizeData(data){
     // Compute mean
     for (var i = 0; i < n; i++){
         
-        sum = sum + parseFloat(data[i][1]);
+        sum = sum + data[i][1];
     }
     mean = sum/n;
     // Compute standard deviation
     sum = 0;
     for (var i = 0; i< n; i++){
-        sum = sum + Math.pow(parseFloat(data[i][1])-mean,2);
+        sum = sum + Math.pow(data[i][1]-mean,2);
     }
     sd = Math.sqrt(sum/n);
     // Normalize the mean to be 0 and standard deviation to be 1
     var nData = new Array(n);
     for (var i = 0; i<n; i++){
-        nData[i]=(parseFloat(data[n-1-i][1])-mean)/sd;
+        nData[i]=(data[i][1]-mean)/sd;
     }
 
     var returnVal = {data: nData, dataMean: mean, dataSD: sd};
